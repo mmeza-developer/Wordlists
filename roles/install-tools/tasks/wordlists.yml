@@ -2,7 +2,7 @@
   shell: "mkdir -p {{item.path}}"
   loop:
     - {path: /opt/wordlists/CustomWordlist/Param-Enumeration}
-    - {path: /opt/wordlists/CustomWordlist/CLRF}
+    - {path: /opt/wordlists/CustomWordlist/CRLF}
     - {path: /opt/wordlists/CustomWordlist/HTTP-Headers}
     - {path: /opt/wordlists/CustomWordlist/User-Agents}
     - {path: /opt/wordlists/CustomWordlist/HTML}
@@ -43,8 +43,8 @@
     - { repo: "/opt/wordlists/sus_params/txt/debug.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
     - { repo: "/opt/wordlists/sus_params/txt/debug.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
     # CLRF
-    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/crlf-injection.txt" , location: "/opt/wordlists/CustomWordlist/CLRF" }
-    - { repo: "/opt/wordlists/PayloadsAllTheThings/CRLF\\ Injection/crlfinjection.txt" , location: "/opt/wordlists/CustomWordlist/CLRF" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/crlf-injection.txt" , location: "/opt/wordlists/CustomWordlist/CRLF" }
+    - { repo: "/opt/wordlists/PayloadsAllTheThings/CRLF\\ Injection/crlfinjection.txt" , location: "/opt/wordlists/CustomWordlist/CRLF" }
     #HTTP Headers
     - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/http-request-header-field-names.txt" , location: "/opt/wordlists/CustomWordlist/HTTP-Headers" }
     - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/http-response-header-field-names.txt" , location: "/opt/wordlists/CustomWordlist/HTTP-Headers" }
