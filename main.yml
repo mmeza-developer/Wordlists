@@ -1,0 +1,7 @@
+---
+- name: "Customizing VPS"
+  hosts: localhost
+  connection: local
+  roles:
+    - role: "roles/install-tools"
+

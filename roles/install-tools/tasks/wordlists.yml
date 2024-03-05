@@ -1,0 +1,194 @@
+- name: "make directory"
+  shell: "mkdir -p {{item.path}}"
+  loop:
+    - {path: /opt/wordlists/CustomWordlist/Param-Enumeration}
+    - {path: /opt/wordlists/CustomWordlist/CLRF}
+    - {path: /opt/wordlists/CustomWordlist/HTTP-Headers}
+    - {path: /opt/wordlists/CustomWordlist/User-Agents}
+    - {path: /opt/wordlists/CustomWordlist/HTML}
+    - {path: /opt/wordlists/CustomWordlist/Javascript}
+    - {path: /opt/wordlists/CustomWordlist/SSRF}
+    - {path: /opt/wordlists/CustomWordlist/API}
+    - {path: /opt/wordlists/CustomWordlist/LFI}
+    - {path: /opt/wordlists/CustomWordlist/MIME-Types}
+    - {path: /opt/wordlists/CustomWordlist/NoSQL}
+    - {path: /opt/wordlists/CustomWordlist/RCE}
+    - {path: /opt/wordlists/CustomWordlist/Path-Traversal}
+    - {path: /opt/wordlists/CustomWordlist/Unicode}
+    - {path: /opt/wordlists/CustomWordlist/XML}
+    - {path: /opt/wordlists/CustomWordlist/SQLi}
+    - {path: /opt/wordlists/CustomWordlist/Esquemas}
+    - {path: /opt/wordlists/CustomWordlist/WebSocket}
+    - {path: /opt/wordlists/CustomWordlist/Subdomains}
+    - {path: /opt/wordlists/CustomWordlist/WebServers}
+    - {path: /opt/wordlists/CustomWordlist/Interesting-Files}
+    - {path: /opt/wordlists/CustomWordlist/Directory-Wordlist}
+    - {path: /opt/wordlists/CustomWordlist/Bypass-403}
+    - {path: /opt/wordlists/CustomWordlist/Usernames}
+    - {path: /opt/wordlists/CustomWordlist/Passwords}
+    - {path: /opt/wordlists/CustomWordlist/Names}
+    - {path: /opt/wordlists/CustomWordlist/Android}
+    - {path: /opt/wordlists/CustomWordlist/General}
+    - {path: /opt/wordlists/CustomWordlist/Fuzzing}
+  become: true
+  ignore_errors: true
+
+- name: "Copying Files"
+  shell: "cp {{item.repo}} {{item.location}}"
+  loop:
+    # Params Enumeration
+    - { repo: "/opt/wordlists/samlists/sam-cc-parameters-lowercase-all.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
+    - { repo: "/opt/wordlists/parameth/lists/all.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
+    - { repo: "/opt/wordlists/parameth/lists/backslash-powered-scanner-params.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
+    - { repo: "/opt/wordlists/sus_params/txt/debug.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
+    - { repo: "/opt/wordlists/sus_params/txt/debug.txt" , location: "/opt/wordlists/CustomWordlist/Param-Enumeration" }
+    # CLRF
+    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/crlf-injection.txt" , location: "/opt/wordlists/CustomWordlist/CLRF" }
+    - { repo: "/opt/wordlists/PayloadsAllTheThings/CRLF\\ Injection/crlfinjection.txt" , location: "/opt/wordlists/CustomWordlist/CLRF" }
+    #HTTP Headers
+    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/http-request-header-field-names.txt" , location: "/opt/wordlists/CustomWordlist/HTTP-Headers" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/http-response-header-field-names.txt" , location: "/opt/wordlists/CustomWordlist/HTTP-Headers" }
+    # User-Agent
+    - { repo: "/opt/wordlists/fuzzdb/attack/http-protocol/user-agents.txt" , location: "/opt/wordlists/CustomWordlist/User-Agents" }
+    # HTML
+    - { repo: "/opt/wordlists/fuzzdb/attack/html_js_fuzz/html_attributes.txt" , location: "/opt/wordlists/CustomWordlist/HTML" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/html_js_fuzz/html_tags.txt" , location: "/opt/wordlists/CustomWordlist/HTML" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/html_js_fuzz/HTML5sec_Injections.txt" , location: "/opt/wordlists/CustomWordlist/HTML" }
+    # Javascript
+    - { repo: "/opt/wordlists/fuzzdb/attack/html_js_fuzz/javascript_events.txt" , location: "/opt/wordlists/CustomWordlist/Javascript" }
+    # SSRF
+    - { repo: "/opt/wordlists/fuzzdb/attack/ip/localhost.txt" , location: "/opt/wordlists/CustomWordlist/SSRF" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/html_js_fuzz/javascript_events.txt" , location: "/opt/wordlists/CustomWordlist/SSRF" }
+    #API
+    - { repo: "/opt/wordlists/fuzzdb/attack/json/JSON_Fuzzing.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/fuzzdb/wordlists-misc/numeric.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/3_digits_000_to_999.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/4_digits_0000_to_9999.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/5_digits_00000_to_99999.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/6_digits_000000_to_999999.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/alphanum_case.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/alphanum_case_extra.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/char.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/unicode.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/wordlists/wordlists/stressing/uri_hex.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/api-actions.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/api-objects.txt " , location: "/opt/wordlists/CustomWordlist/API" } 
+    - { repo: " /opt/wordlists/Bug-Bounty-Wordlists/6-digits-000000-999999.txt" , location: "/opt/wordlists/CustomWordlist/API" } 
+    # LFI
+    - { repo: "/opt/wordlists/fuzzdb/attack/lfi/common-unix-httpd-log-locations.txt" , location: "/opt/wordlists/CustomWordlist/LFI" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/lfi/common-ms-httpd-log-locations.txt" , location: "/opt/wordlists/CustomWordlist/LFI" }
+    - { repo: "/opt/wordlists/fuzzdb/attack/lfi/JHADDIX_LFI.txt" , location: "/opt/wordlists/CustomWordlist/LFI" }
+    # MIME Types
+    - { repo: "/opt/wordlists/fuzzdb/attack/mimetypes/MimeTypes.txt" , location: "/opt/wordlists/CustomWordlist/MIME-Types" }
+    # NoSQL
+    - { repo: "/opt/wordlists/fuzzdb/attack/no-sql-injection/mongodb.txt" , location: "/opt/wordlists/CustomWordlist/NoSQL" }
+    # RCE
+    - { repo: "/opt/wordlists/fuzzdb/tree/attack/os-cmd-execution " , location: "/opt/wordlists/CustomWordlist/RCE" }
+    # Path Traversal
+    - { repo: "/opt/wordlists/fuzzdb/tree/attack/path-traversal" , location: "/opt/wordlists/CustomWordlist/Path-Traversal" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/directory_traversal.txt" , location: "/opt/wordlists/CustomWordlist/Path-Traversal" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/directory_traversal_unix.txt" , location: "/opt/wordlists/CustomWordlist/Path-Traversal" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/directory_traversal_win.txt" , location: "/opt/wordlists/CustomWordlist/Path-Traversal" }
+   # Unicode
+    - { repo: "/opt/wordlists/fuzzdb/tree/attack/unicode" , location: "/opt/wordlists/CustomWordlist/Unicode" }
+    # XML
+    - { repo: "/opt/wordlists/fuzzdb/tree/attack/xss" , location: "/opt/wordlists/CustomWordlist/XML" }
+    # SQLI
+    - { repo: "/opt/wordlists/wordlists/wordlists/discovery/common_sql_columns.txt" , location: "/opt/wordlists/CustomWordlist/SQLi" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/discovery/common_sql_tables.txt" , location: "/opt/wordlists/CustomWordlist/SQLi" }
+    # Esquemas
+    - { repo: "/opt/wordlists/fuzzdb/discovery/URI_SCHEMES/IANA_registerd_URI_schemes.txt" , location: "/opt/wordlists/CustomWordlist/Esquemas" }
+    # Web Sockets
+    - { repo: "/opt/wordlists/fuzzdb/tree/discovery/WebSocket" , location: "/opt/wordlists/WebSockets/CustomWordlist/WebSocket" }
+    # DNS Subdomains
+    - { repo: "/opt/wordlists/fuzzdb/tree/discovery/dns" , location: "/opt/wordlists/CustomWordlist/Subdomains" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/discovery/top_subdomains.txt" , location: "/opt/wordlists/CustomWordlist/Subdomains" }
+    # Web Servers
+    - { repo: "/opt/wordlists/fuzzdb/tree/discovery/predictable-filepaths/webservers-appservers" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/weblogic.txt" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/websphere.txt" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/apache.txt" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/tomcat.txt" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/jboss.txt" , location: "/opt/wordlists/CustomWordlist/WebServers" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/tomcat.txt" , location: "/opt/wordlists/CustomWordlist/WebServers/tomcat2.txt" }
+    # Interesting Files
+    - { repo: "/opt/wordlists/fuzzdb/discovery/predictable-filepaths/password-file-locations/Passwords.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/discovery/conf.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/fuzz.txt/fuzz.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/cgi-bin.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/dotfiles.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/properties-files.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/yaml.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/env.txt" , location: "/opt/wordlists/CustomWordlist/Interesting-Files/" }
+    # Directory Wordlist
+    - { repo: "/opt/wordlists/fuzzdb/tree/discovery/predictable-filepaths/filename-dirname-bruteforce" , location: "/opt/wordlists/CustomWordlist/Directory-Wordlist/" }
+    # Bypass 403
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/403_url_payloads.txt" , location: "/opt/wordlists/CustomWordlist/Bypass-403/" }
+    - { repo: "/opt/wordlists/byp4xx/tree/templates" , location: "/opt/wordlists/CustomWordlist/Bypass-403/" }
+    # Usernames
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/cirt_default_usernames.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/common_admin_base64.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/db2_default_user.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/default_users_for_services.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/http_default_users.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/ipmi_users.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/mirai_user.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/multiple_sources_users.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/postgres_default_user.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/tomcat_mgr_default_users.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/unix_users.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/usernames/xato_net_usernames.txt" , location: "/opt/wordlists/CustomWordlist/Usernames/" }
+    # Passwords
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/000webhost.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/bt4_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/burnett.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/common_passwords_win.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/common_roots.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/darkweb_2017.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/db2_default_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/default_passwords_for_services.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/dutch_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/hak5.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/honeynet.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/http_default_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/ipmi_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/keyboard_patterns.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/md5decryptor.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/medical_devices_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/mirai_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/most_used_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/most_used_passwords_ncsc.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/nord_vpn.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/openwall.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/password.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/postgres_default_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/probable_wpa.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/tomcat_mgr_default_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/top_adobe_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/unix_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/passwords/xato_net_passwords.txt" , location: "/opt/wordlists/CustomWordlist/Passwords/" }
+    # Names
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/names.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_family_names_usa.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_female_names_canada.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_female_names_india.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_female_names_india.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_female_names_usa.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_name_germany.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_names_canada.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_names_france.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_names_india.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_names_turkish.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    - { repo: "/opt/wordlists/wordlists/wordlists/names/top_male_names_usa.txt" , location: "/opt/wordlists/CustomWordlist/Names/" }
+    # Android Permission
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/android_all_permissions.txt" , location: "/opt/wordlists/CustomWordlist/Android/" }
+    # General
+    - { repo: "/opt/wordlists/wordlists/wordlists/vulnerabilities/all_attacks.txt" , location: "/opt/wordlists/CustomWordlist/General/" }
+    # Fuzzing
+    - { repo: "/opt/wordlists/My-WordLISTs/fuzz.txt" , location: "/opt/wordlists/CustomWordlist/Fuzzing/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/backup_files_only.txt" , location: "/opt/wordlists/CustomWordlist/Fuzzing/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/backup_files_with_path.txt" , location: "/opt/wordlists/CustomWordlist/Fuzzing/" }
+    - { repo: "/opt/wordlists/Bug-Bounty-Wordlists/php_files_only.txt" , location: "/opt/wordlists/CustomWordlist/Fuzzing/" }
+  become: true
+  async: 45
+  poll: 0

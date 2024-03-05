@@ -1,0 +1,3 @@
+---
+- import_tasks: github-repos.yml
+- import_tasks: wordlists.yml
